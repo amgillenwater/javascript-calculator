@@ -6,7 +6,7 @@ function selectNumber (id, number){
     document.querySelector(id).addEventListener ("click",
     function(){
         // console.log(number)
-        display.textContent = number;
+        display.textContent += number;
     }
     )
 }
@@ -18,7 +18,13 @@ function selectClear (id){
     }
     )
 }
-
+function selectEqual (id, number){
+    document.querySelector(id).addEventListener ("click",
+    function(){
+        display.textContent = eval(display.textContent);
+    }
+    )
+}
 selectNumber("#one",1)
 selectNumber("#two", 2)
 selectNumber("#three", 3)
