@@ -1,47 +1,33 @@
-let calculator = document.querySelector(".calculator");
-// console.log(calculator)
-display.textContent = "";
+// identify the display
+// identify all the buttons, add event listeners to them
+// when buttons are clicked, edit innertext of the display equal to the innertext of the button
+// when equals is clicked, use eval to evaluate string in innertext of display
 
-function selectNumber (id, number){
-    document.querySelector(id).addEventListener ("click",
-    function(){
-        // console.log(number)
-        display.textContent += number;
-    }
-    )
+const screen = document.querySelector('#display')
+console.log(screen)
+
+const buttons = document.querySelectorAll('.calc-button')
+console.log(buttons)
+
+const clear = document.querySelector('#c')
+console.log(clear)
+
+const equals = document.querySelector('#equals')
+
+for (const button of buttons) {
+  button.addEventListener('click', function () {
+    const newElement = document.createElement('span')
+    const text = document.createTextNode(button.innerText)
+    newElement.appendChild(text)
+    screen.appendChild(newElement)
+    console.log(screen.innerText)
+  })
 }
 
-function selectClear (id){
-    document.querySelector(id).addEventListener ("click",
-    function(){
-        display.textContent = "";
-    }
-    )
-}
-function selectEqual (id, number){
-    document.querySelector(id).addEventListener ("click",
-    function(){
-        display.textContent = eval(display.textContent);
-    }
-    )
-}
-selectNumber("#one",1)
-selectNumber("#two", 2)
-selectNumber("#three", 3)
-selectNumber("#four", 4)
-selectNumber("#five", 5)
-selectNumber("#six", 6)
-selectNumber("#seven", 7)
-selectNumber("#eight", 8)
-selectNumber("#nine", 9)
-selectNumber("#zero", 0)
-selectClear("#c")
+clear.addEventListener('click', function () {
+  screen.innerText = ''
+})
 
-
-
-//now we need to figure out the operation buttons
-//the operation buttons need to do more than one thing when they are pressed? 
-//they need to somehow remember the number that was entered before the button
-//then they have to update the display
-//then accept another number?
-//the equals sign needs to execute the actual math portion
+equals.addEventListener('click', function () {
+  screen.innerText = eval(screen.innerText)
+})
